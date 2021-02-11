@@ -21,5 +21,8 @@
     "no-shadow": "off",
     "arrow-parens": ["error", "as-needed"]
   },
-  "ignorePatterns": ["dist/", "build/"]
+  "ignorePatterns": [
+    "dist/",
+    "build/"
+  ]
 }

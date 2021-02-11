@@ -1,11 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class Display extends Component {
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
+function Display({ result }) {
+  return (
+    <div>
+      {result}
+    </div>
+  );
 }
+
+Display.propTypes = {
+  result: PropTypes.string,
+};
+
+Display.defaultProps = {
+  result: 0,
+};
+
+export default Display;

@@ -19,15 +19,15 @@
 
 👤 **Martin Najjar**
 
-- Github: [@githubhandle](https://github.com/martinnajjar12)
-- Twitter: [@twitterhandle](https://twitter.com/martin_najjar)
-- Linkedin: [linkedin](https://www.linkedin.com/in/martinnajjar12/)
+- Github: [Martin Najjar](https://github.com/martinnajjar12)
+- Twitter: [Martin Najjar](https://twitter.com/martin_najjar)
+- Linkedin: [Martin Najjar](https://www.linkedin.com/in/martinnajjar12/)
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/martinnajjar12/martin-calculator/issues).
+Feel free to check the [issues page](https://github.com/martinnajjar12/react-calculator/issues).
 
 ## Show your support
 

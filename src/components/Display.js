@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 
 const Display = ({ result }) => {
   const classes = useStyles();
-  return (<div className={classes.root}>{result}</div>);
+  return (<div className={classes.root}>{result || 0}</div>);
 };
 
 Display.propTypes = {

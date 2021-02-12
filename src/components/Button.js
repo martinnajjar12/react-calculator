@@ -31,8 +31,10 @@ const Button = ({
   zeroButton,
   topPanel,
   rightPanel,
+  clickHandler,
 }) => {
   const classes = useStyles();
+
   const isItZero = (zeroBtn, topPanel) => {
     if (zeroBtn === 'true') {
       return `${classes.root} ${classes.zeroButton}`;
@@ -50,11 +52,26 @@ const Button = ({
     return 'primary';
   };
 
-  return <MuiButton className={isItZero(zeroButton, topPanel)} color={primaryOrSecondary(rightPanel)} variant="contained" name={name}>{name}</MuiButton>;
+  const handleClick = btnName => {
+    clickHandler(btnName);
+  };
+
+  return (
+    <MuiButton
+      className={isItZero(zeroButton, topPanel)}
+      color={primaryOrSecondary(rightPanel)}
+      variant="contained"
+      name={name}
+      onClick={handleClick}
+    >
+      {name}
+    </MuiButton>
+  );
 };
 
 Button.propTypes = {
   name: PropTypes.string.isRequired,
+  clickHandler: PropTypes.func.isRequired,
   zeroButton: PropTypes.string,
   topPanel: PropTypes.string,
   rightPanel: PropTypes.string,

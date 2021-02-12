@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core';
 import ButtonPanel from './ButtonPanel';
 import Display from './Display';
+import calculate from '../logic/calculate';
 
 const theme = createMuiTheme({
   palette: {
@@ -15,9 +16,6 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: '#ff9e00',
-    },
-    rightBtns: {
-      bgColor: '#a5a5a5',
     },
     type: 'dark',
   },
@@ -30,6 +28,7 @@ const useStyles = makeStyles({
 });
 
 const App = () => {
+  calculate();
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>

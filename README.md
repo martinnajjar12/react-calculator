@@ -2,12 +2,12 @@
 
 # React Calculator App
 
-> A calculator built with ReactJS.
+> A calculator built with ReactJS and Material UI.
 
 ## Built With
 
 - HTML5
-- CSS3
+- Material UI
 - JavaScript
 - ReactJS
 

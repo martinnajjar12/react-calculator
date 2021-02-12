@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core';
 import ButtonPanel from './ButtonPanel';
 import Display from './Display';
+// import calculate from '../logic/calculate';
 
 const theme = createMuiTheme({
   palette: {

@@ -7,7 +7,7 @@ const calculate = (data, btnName) => {
   const { total, next, operation } = data;
   if (operations.includes(btnName)) {
     newTotal = operate(total, next, btnName);
-    return { newTotal, next, operation };
+    return { newTotal, next, btnName };
   }
   const newNext = btnName;
   return { total, newNext, operation };

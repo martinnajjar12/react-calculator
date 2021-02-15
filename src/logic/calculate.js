@@ -1,16 +1,71 @@
 import operate from './operate';
 
-const operations = ['+', '−', '×', '÷', '%', 'AC', '=', '+/-'];
-
 const calculate = (data, btnName) => {
-  let newTotal;
-  const { total, next, operation } = data;
-  if (operations.includes(btnName)) {
-    newTotal = operate(total, next, btnName);
-    return { newTotal, next, btnName };
+  let { total, next, operation } = data;
+  const operators = ['+', 'x', '−', '÷'];
+  const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+  switch (btnName) {
+    case 'AC':
+      total = null;
+      next = null;
+      operation = null;
+      break;
+
+    case '+/-':
+      if (total) (total *= (-1));
+      if (next) (next *= (-1));
+      break;
+
+    case '%':
+      operation = btnName;
+      operate(total, next, operation);
+      break;
+
+    case '=':
+      if (total && next && operation) {
+        total = operate(total, next, operation);
+        next = null;
+        operation = null;
+      }
+      break;
+
+    case '.':
+      if (next) {
+        if (next.includes('.')) {
+          return {};
+        }
+        return { next: `${next}.` };
+      }
+      if (operation) {
+        return { next: '0.' };
+      }
+      if (total) {
+        if (total.includes('.')) {
+          return {};
+        }
+        return { total: `${total}.` };
+      }
+      return { total: '0.' };
+
+    default:
+      break;
   }
-  const newNext = btnName;
-  return { total, newNext, operation };
+
+  if ((total && next && operation) && operators.includes(btnName)) {
+    total = operate(total, next, operation);
+    next = null;
+    operation = '=';
+  }
+
+  if (operators.includes(btnName)) {
+    operation = btnName;
+  } else if (operation && numbers.includes(btnName)) {
+    next = next ? next + btnName : btnName;
+  } else if (numbers.includes(btnName)) {
+    total = total ? total + btnName : btnName;
+  }
+  return { total, next, operation };
 };
 
 export default calculate;

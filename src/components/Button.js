@@ -62,7 +62,7 @@ const Button = ({
       color={primaryOrSecondary(rightPanel)}
       variant="contained"
       name={name}
-      onClick={handleClick}
+      onClick={() => handleClick(name)}
     >
       {name}
     </MuiButton>

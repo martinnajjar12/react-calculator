@@ -35,16 +35,16 @@ class App extends Component {
     this.state = {
       total: null,
       next: null,
-      // operation: null,
+      operation: null,
     };
   }
 
   render() {
     const { classes } = this.props;
-    const { total, next } = this.state;
+    const { total } = this.state;
     const handleClick = btnName => {
-      const result = calculate(total, next, btnName);
-      this.setState(result);
+      const result = calculate(this.state, btnName);
+      this.setState(() => result);
     };
 
     return (

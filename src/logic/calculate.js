@@ -1,6 +1,7 @@
 import operate from './operate';
 
 let newCalculation = false;
+let prevOperation;
 
 const calculate = (data, btnName) => {
   let { total, next, operation } = data;
@@ -21,13 +22,21 @@ const calculate = (data, btnName) => {
       break;
 
     case '%':
+      prevOperation = operation;
       operation = btnName;
-      total = operate(total, next, operation);
+      if (next) {
+        next = operate(total, next, operation);
+      } else {
+        total = operate(total, next, operation);
+      }
       break;
 
     case '=':
       if (total && next && operation) {
         newCalculation = true;
+        if (prevOperation) {
+          operation = prevOperation;
+        }
         total = operate(total, next, operation);
         next = null;
         operation = null;

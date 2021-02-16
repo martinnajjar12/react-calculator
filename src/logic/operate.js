@@ -4,6 +4,7 @@ const operate = (numberOne, numberTwo, operation) => {
   let bigNumberOne;
   let bigNumberTwo;
   let total;
+  let next;
   if (numberOne) {
     bigNumberOne = new Big(numberOne);
   }
@@ -28,7 +29,8 @@ const operate = (numberOne, numberTwo, operation) => {
       if (numberTwo === null) {
         total = bigNumberOne.div(100);
       } else {
-        total = bigNumberTwo.div(100);
+        next = bigNumberTwo.div(100);
+        return next.toString();
       }
       break;
     case '=':

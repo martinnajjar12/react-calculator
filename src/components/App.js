@@ -1,10 +1,12 @@
+import React, { Component } from 'react';
 import {
   unstable_createMuiStrictModeTheme as createMuiTheme,
   ThemeProvider,
   Grid,
-  makeStyles,
+  withStyles,
   CssBaseline,
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import ButtonPanel from './ButtonPanel';
 import Display from './Display';
 import calculate from '../logic/calculate';
@@ -21,26 +23,53 @@ const theme = createMuiTheme({
   },
 });
 
-const useStyles = makeStyles({
+const styles = {
   calWidth: {
     maxWidth: '375px',
   },
-});
-
-const App = () => {
-  calculate();
-  const classes = useStyles();
-  return (
-    <ThemeProvider theme={theme}>
-      <Grid container justify="center" direction="column" alignItems="center">
-        <div className={classes.calWidth}>
-          <Display />
-          <ButtonPanel />
-        </div>
-      </Grid>
-      <CssBaseline />
-    </ThemeProvider>
-  );
 };
 
-export default App;
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      total: null,
+      next: null,
+      operation: null,
+    };
+  }
+
+  render() {
+    const { classes } = this.props;
+    const { total, next } = this.state;
+    const handleClick = btnName => {
+      const result = calculate(this.state, btnName);
+      this.setState(() => result);
+    };
+    const displayProperValue = (total, next) => {
+      if (next) {
+        return next;
+      }
+      return total;
+    };
+
+    return (
+      <ThemeProvider theme={theme}>
+        <Grid container justify="center" direction="column" alignItems="center">
+          <div className={classes.calWidth}>
+            <Display result={displayProperValue(total, next)} />
+            <ButtonPanel clickHandler={handleClick} />
+          </div>
+        </Grid>
+        <CssBaseline />
+      </ThemeProvider>
+    );
+  }
+}
+
+App.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(App);

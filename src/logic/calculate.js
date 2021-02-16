@@ -1,8 +1,10 @@
 import operate from './operate';
 
+let newCalculation = false;
+
 const calculate = (data, btnName) => {
   let { total, next, operation } = data;
-  const operators = ['+', 'x', '−', '÷'];
+  const operators = ['+', '×', '−', '÷'];
   const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
   switch (btnName) {
@@ -24,6 +26,7 @@ const calculate = (data, btnName) => {
 
     case '=':
       if (total && next && operation) {
+        newCalculation = true;
         total = operate(total, next, operation);
         next = null;
         operation = null;
@@ -62,6 +65,8 @@ const calculate = (data, btnName) => {
     operation = btnName;
   } else if (operation && numbers.includes(btnName)) {
     next = next ? next + btnName : btnName;
+  } else if (newCalculation === true && numbers.includes(btnName)) {
+    total = btnName;
   } else if (numbers.includes(btnName)) {
     total = total ? total + btnName : btnName;
   }

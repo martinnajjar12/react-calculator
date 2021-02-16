@@ -44,7 +44,7 @@ class App extends Component {
     const { total } = this.state;
     const handleClick = btnName => {
       const result = calculate(this.state, btnName);
-      this.setState(() => result);
+      this.setState(() => result, () => console.log(this.state));
     };
 
     return (

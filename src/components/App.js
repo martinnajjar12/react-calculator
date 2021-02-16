@@ -41,17 +41,23 @@ class App extends Component {
 
   render() {
     const { classes } = this.props;
-    const { total } = this.state;
+    const { total, next } = this.state;
     const handleClick = btnName => {
       const result = calculate(this.state, btnName);
-      this.setState(() => result, () => console.log(this.state));
+      this.setState(() => result);
+    };
+    const displayProperValue = (total, next) => {
+      if (next) {
+        return next;
+      }
+      return total;
     };
 
     return (
       <ThemeProvider theme={theme}>
         <Grid container justify="center" direction="column" alignItems="center">
           <div className={classes.calWidth}>
-            <Display result={total} />
+            <Display result={displayProperValue(total, next)} />
             <ButtonPanel clickHandler={handleClick} />
           </div>
         </Grid>

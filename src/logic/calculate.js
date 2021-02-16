@@ -17,8 +17,13 @@ const calculate = (data, btnName) => {
       break;
 
     case '+/-':
-      if (total) (total *= (-1));
-      if (next) (next *= (-1));
+      if (next) {
+        next *= -1;
+        next = next.toString();
+      } else if (total) {
+        total *= -1;
+        total = total.toString();
+      }
       break;
 
     case '%':

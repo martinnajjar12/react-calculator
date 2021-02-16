@@ -1,36 +1,38 @@
 import Big from 'big.js';
 
 const operate = (numberOne, numberTwo, operation) => {
-  let intOne;
-  let intTwo;
+  let bigNumberOne;
+  let bigNumberTwo;
   let total;
   if (numberOne) {
-    const bigNumberOne = new Big(numberOne);
-    intOne = parseInt(bigNumberOne, 10);
+    bigNumberOne = new Big(numberOne);
   }
   if (numberTwo) {
-    const bigNumberTwo = new Big(numberTwo);
-    intTwo = parseInt(bigNumberTwo, 10);
+    bigNumberTwo = new Big(numberTwo);
   }
 
   switch (operation) {
     case '+':
-      total = intOne + intTwo;
+      total = bigNumberOne.plus(bigNumberTwo);
       break;
     case '−':
-      total = intOne - intTwo;
+      total = bigNumberOne.minus(bigNumberTwo);
       break;
     case '÷':
-      total = intOne / intTwo;
+      total = bigNumberOne.div(bigNumberTwo);
       break;
     case '×':
-      total = intOne * intTwo;
+      total = bigNumberOne.times(bigNumberTwo);
       break;
     case '%':
-      total = numberTwo ? intTwo / 100 : intOne / 100;
+      if (numberTwo === null) {
+        total = bigNumberOne.div(100);
+      } else {
+        total = bigNumberTwo.div(100);
+      }
       break;
     case '=':
-      return parseInt(`${intOne} ${operation} ${intTwo}`, 10);
+      return parseInt(`${bigNumberOne} ${operation} ${bigNumberTwo}`, 10);
     default:
       break;
   }

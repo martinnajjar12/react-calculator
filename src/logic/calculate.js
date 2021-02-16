@@ -12,6 +12,7 @@ const calculate = (data, btnName) => {
       total = null;
       next = null;
       operation = null;
+      newCalculation = false;
       break;
 
     case '+/-':
@@ -21,7 +22,7 @@ const calculate = (data, btnName) => {
 
     case '%':
       operation = btnName;
-      operate(total, next, operation);
+      total = operate(total, next, operation);
       break;
 
     case '=':
@@ -47,6 +48,7 @@ const calculate = (data, btnName) => {
         if (total.includes('.')) {
           return {};
         }
+        newCalculation = false;
         return { total: `${total}.` };
       }
       return { total: '0.' };

@@ -83,6 +83,7 @@ const calculate = (data, btnName) => {
     next = next ? next + btnName : btnName;
   } else if (newCalculation === true && numbers.includes(btnName)) {
     total = btnName;
+    newCalculation = false;
   } else if (numbers.includes(btnName)) {
     total = total ? total + btnName : btnName;
   }

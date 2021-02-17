@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   unstable_createMuiStrictModeTheme as createMuiTheme,
   ThemeProvider,
-  Grid,
   CssBaseline,
+  AppBar,
+  Toolbar,
+  Typography,
   makeStyles,
+  Grid,
+  Container,
 } from '@material-ui/core';
-import ButtonPanel from './ButtonPanel';
-import Display from './Display';
-import calculate from '../logic/calculate';
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Switch,
+} from 'react-router-dom';
+import Home from './Home';
+import Calculator from './Calculator';
 
 const theme = createMuiTheme({
   palette: {
@@ -23,43 +32,47 @@ const theme = createMuiTheme({
 });
 
 const useStyles = makeStyles({
-  calWidth: {
-    maxWidth: '375px',
+  logoLink: {
+    color: '#ff9e00',
+    textDecoration: 'none',
+  },
+
+  link: {
+    color: '#fff',
+    textDecoration: 'none',
   },
 });
 
 const App = () => {
-  const calculator = {
-    total: null,
-    next: null,
-    operation: null,
-  };
-
-  const [calState, setCalState] = useState(calculator);
   const classes = useStyles();
-
-  const handleClick = btnName => {
-    const result = calculate(calState, btnName);
-    setCalState(() => result);
-  };
-
-  const displayProperValue = (total, next) => {
-    if (next) {
-      return next;
-    }
-    return total;
-  };
-
   return (
-    <ThemeProvider theme={theme}>
-      <Grid container justify="center" direction="column" alignItems="center">
-        <div className={classes.calWidth}>
-          <Display result={displayProperValue(calState.total, calState.next)} />
-          <ButtonPanel clickHandler={handleClick} />
-        </div>
-      </Grid>
-      <CssBaseline />
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <AppBar position="sticky">
+          <Toolbar>
+            <Container>
+              <Grid container justify="space-between" alignItems="center">
+                <Typography variant="h4">
+                  <Link to="/" className={classes.logoLink}>MathMagicians</Link>
+                </Typography>
+                <Grid item container xs={5} md={3} justify="space-between">
+                  <Link to="/" className={classes.link}>Home</Link>
+                  <Link to="/calculator" className={classes.link}>Calculator</Link>
+                  <Link to="/calculator" className={classes.link}>Calculator</Link>
+                </Grid>
+              </Grid>
+            </Container>
+          </Toolbar>
+        </AppBar>
+        <Container>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/calculator" component={Calculator} />
+          </Switch>
+        </Container>
+        <CssBaseline />
+      </ThemeProvider>
+    </BrowserRouter>
   );
 };
 

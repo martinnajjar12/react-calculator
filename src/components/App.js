@@ -13,6 +13,7 @@ import {
 import Home from './Home';
 import Calculator from './Calculator';
 import Header from './Header';
+import Quote from './Quote';
 
 const theme = createMuiTheme({
   palette: {
@@ -34,6 +35,7 @@ const App = () => (
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/calculator" component={Calculator} />
+          <Route exact path="/quote" component={Quote} />
         </Switch>
       </Container>
       <CssBaseline />

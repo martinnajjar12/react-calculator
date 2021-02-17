@@ -38,7 +38,7 @@ const operate = (numberOne, numberTwo, operation) => {
     default:
       break;
   }
-  return total.toFixed(8).toString();
+  return total.toString();
 };
 
 export default operate;

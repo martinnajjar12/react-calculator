@@ -51,21 +51,21 @@ const calculate = (data, btnName) => {
     case '.':
       if (next) {
         if (next.includes('.')) {
-          return {};
+          return { total, next, operation };
         }
-        return { next: `${next}.` };
+        return { total, next: `${next}.`, operation };
       }
       if (operation) {
-        return { next: '0.' };
+        return { total, next: '0.', operation };
       }
       if (total) {
         if (total.includes('.')) {
-          return {};
+          return { total, next, operation };
         }
         newCalculation = false;
-        return { total: `${total}.` };
+        return { total: `${total}.`, next, operation };
       }
-      return { total: '0.' };
+      return { total: '0.', next, operation };
 
     default:
       break;

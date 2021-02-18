@@ -2,7 +2,13 @@
 
 # React Calculator App
 
-> A calculator built with ReactJS and Material UI.
+> A calculator built with ReactJS, Material UI and Big.js.
+
+<br />
+
+![MathMagiciansScreenshot](./MathMagicians.jpg)
+
+<p align="center">Screenshot</p><br />
 
 ## Built With
 
@@ -10,6 +16,7 @@
 - Material UI
 - JavaScript
 - ReactJS
+- Big.js
 
 ## Live Demo
 

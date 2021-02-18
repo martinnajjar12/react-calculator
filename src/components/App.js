@@ -12,7 +12,7 @@ import {
 } from 'react-router-dom';
 import Home from './Home';
 import Calculator from './Calculator';
-import NewHeader from './NewHeader';
+import Header from './Header';
 import Quote from './Quote';
 
 const theme = createMuiTheme({
@@ -30,7 +30,7 @@ const theme = createMuiTheme({
 const App = () => (
   <BrowserRouter>
     <ThemeProvider theme={theme}>
-      <NewHeader />
+      <Header />
       <Container>
         <Switch>
           <Route exact path="/" component={Home} />

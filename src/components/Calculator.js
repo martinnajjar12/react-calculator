@@ -19,7 +19,6 @@ const Calculator = () => {
 
   const [calState, setCalState] = useState(calculator);
   const classes = useStyles();
-
   const handleClick = btnName => {
     const result = calculate(calState, btnName);
     setCalState(() => result);
@@ -31,6 +30,7 @@ const Calculator = () => {
     }
     return total;
   };
+
   return (
     <Grid container justify="center" direction="column" alignItems="center">
       <div className={classes.calWidth}>

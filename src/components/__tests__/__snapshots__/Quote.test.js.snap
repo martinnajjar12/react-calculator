@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should match the snapshot 1`] = `
+<p
+  className="MuiTypography-root makeStyles-quoteMargin-1 MuiTypography-body1"
+>
+  Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding. –William Paul Thurston
+</p>
+`;

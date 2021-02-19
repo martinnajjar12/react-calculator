@@ -1,21 +1,24 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import {
+  AppBar,
+  Drawer,
+  Hidden,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  Typography,
+  Container,
+  Grid,
+} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Container, Grid } from '@material-ui/core';
-import { NavLink } from 'react-router-dom';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import FunctionsRoundedIcon from '@material-ui/icons/FunctionsRounded';
 import FormatQuoteRoundedIcon from '@material-ui/icons/FormatQuoteRounded';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -47,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Header() {
+const Header = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -143,6 +146,6 @@ function Header() {
       </nav>
     </div>
   );
-}
+};
 
 export default Header;

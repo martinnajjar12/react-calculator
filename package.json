@@ -14,7 +14,7 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
-    "web-vitals": "^1.1.0"
+    "react-test-renderer": "^17.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,7 +41,9 @@
     ]
   },
   "devDependencies": {
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "babel-eslint": "^10.1.0",
+    "enzyme": "^3.11.0",
     "eslint": "^7.11.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.22.1",

@@ -74,7 +74,6 @@ const calculate = (data, btnName) => {
   if ((total && next && operation) && operators.includes(btnName)) {
     total = operate(total, next, operation);
     next = null;
-    operation = '=';
   }
 
   if (operators.includes(btnName)) {

@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   unstable_createMuiStrictModeTheme as createMuiTheme,
   ThemeProvider,
-  Grid,
   CssBaseline,
-  makeStyles,
+  Container,
 } from '@material-ui/core';
-import ButtonPanel from './ButtonPanel';
-import Display from './Display';
-import calculate from '../logic/calculate';
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+} from 'react-router-dom';
+import Home from './Home';
+import Calculator from './Calculator';
+import Header from './Header';
+import Quote from './Quote';
 
 const theme = createMuiTheme({
   palette: {
@@ -22,45 +27,20 @@ const theme = createMuiTheme({
   },
 });
 
-const useStyles = makeStyles({
-  calWidth: {
-    maxWidth: '375px',
-  },
-});
-
-const App = () => {
-  const calculator = {
-    total: null,
-    next: null,
-    operation: null,
-  };
-
-  const [calState, setCalState] = useState(calculator);
-  const classes = useStyles();
-
-  const handleClick = btnName => {
-    const result = calculate(calState, btnName);
-    setCalState(() => result);
-  };
-
-  const displayProperValue = (total, next) => {
-    if (next) {
-      return next;
-    }
-    return total;
-  };
-
-  return (
+const App = () => (
+  <BrowserRouter>
     <ThemeProvider theme={theme}>
-      <Grid container justify="center" direction="column" alignItems="center">
-        <div className={classes.calWidth}>
-          <Display result={displayProperValue(calState.total, calState.next)} />
-          <ButtonPanel clickHandler={handleClick} />
-        </div>
-      </Grid>
+      <Header />
+      <Container>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/calculator" component={Calculator} />
+          <Route exact path="/quote" component={Quote} />
+        </Switch>
+      </Container>
       <CssBaseline />
     </ThemeProvider>
-  );
-};
+  </BrowserRouter>
+);
 
 export default (App);

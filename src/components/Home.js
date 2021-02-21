@@ -1,12 +1,15 @@
 import { makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   headerFontSize: {
     fontSize: '3rem',
     margin: '25px 0',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '2rem',
+    },
   },
-});
+}));
 
 const Home = () => {
   const classes = useStyles();

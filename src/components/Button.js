@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, Button as MuiButton } from '@material-ui/core/';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     borderRadius: '50%',
     maxWidth: '75px',
@@ -11,6 +11,12 @@ const useStyles = makeStyles({
     minWidth: '75px',
     margin: '4px',
     fontSize: '1.8rem',
+    [theme.breakpoints.down('365')]: {
+      maxWidth: '60px',
+      maxHeight: '60px',
+      minHeight: '60px',
+      minWidth: '60px',
+    },
   },
   zeroButton: {
     width: '158px',
@@ -20,11 +26,14 @@ const useStyles = makeStyles({
       justifyContent: 'left',
       marginLeft: '15px',
     },
+    [theme.breakpoints.down('365')]: {
+      width: '128px',
+    },
   },
   topPanel: {
     backgroundColor: '#a5a5a5',
   },
-});
+}));
 
 const Button = ({
   name,
